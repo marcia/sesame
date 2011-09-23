@@ -15,10 +15,21 @@ chrome.extension.sendRequest({}, function( response ) {});
 var enabled = true;
 jQuery( function() {
 	jQuery( document ).keypress( function( event ) {
-		if ( enabled && event.which === 111 ) {
+		if ( !enabled ) {
+			return;
+		}
+
+		// "o"
+		if ( event.which === 111 ) {
 			openProblemInNewTab();
 		}
+
+		// "a"
+		if ( event.which === 97 ) {
+			jQuery("#issue_assignee_marcia").click();
+		}
 	});
+
 	jQuery( "textarea, input" ).focus( function( event ) {
 		enabled = false;
 	}).blur( function( event ) {
