@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<script>
+		function showPageAction( request, sender, sendResponse ) {
+			// Show the page action leaf icon
+			chrome.pageAction.show( sender.tab.id );
+			// Return nothing to let the connection be cleaned up
+			sendResponse({});
+		};
+
+
+		// Listen for the content script to send a message
+		chrome.extension.onRequest.addListener( showPageAction );
+
+		// Send a request to contentscript, which will open the new tab
+		chrome.pageAction.onClicked.addListener( function( tab ) {
+			chrome.tabs.sendRequest( tab.id, {} );
+		});
+</script>
+</head>
+</html>
