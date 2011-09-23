@@ -12,10 +12,16 @@ chrome.extension.onRequest.addListener( openProblemInNewTab );
 
 chrome.extension.sendRequest({}, function( response ) {});
 
+var enabled = true;
 jQuery( function() {
 	jQuery( document ).keypress( function( event ) {
-		if ( event.which === 111 ) {
+		if ( enabled && event.which === 111 ) {
 			openProblemInNewTab();
 		}
+	});
+	jQuery( "textarea, input" ).focus( function( event ) {
+		enabled = false;
+	}).blur( function( event ) {
+		enabled = true;
 	});
 })
