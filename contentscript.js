@@ -3,7 +3,7 @@
 function openProblemInNewTab( request, sender, sendResponse ) {
 	var exercise = jQuery( ".content-body:first" ).text().match( /.*html.*/ );
 	var base = "http://localhost/khan-exercises/exercises/";
-	window.open( base + exercise.pop(), "_blank" );
+	window.open( base + exercise.pop() + "&debug", "_blank" );
 }
 
 // Listen for the request to open the problem in a new tab,
