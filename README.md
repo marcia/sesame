@@ -1,3 +1,5 @@
+"sesame" like "open sesame!" and "sesame street!" "!!!!"
+
 * Tools => Extensions
 * Show developer mode
 * Load unpacked extension
